@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Select from 'react-select';
 import { Link } from 'react-router-dom';
 
 /**
@@ -19,20 +20,27 @@ const Home = () => {
     fetchTerms();
   }, []);
 
-  console.log(terms);
-
   const programs = Object.keys(terms);
 
-  console.log(programs);
+  /* An array of objects where program name is both the key and value.
+    Needed to pass to react-select
+  */
+  const options = programs.map((program) => ({
+    value: program,
+    label: program,
+  }));
 
-  //e.g. if data has not yet been fetched
+  //if data has not yet been fetched, return empty div
   if (terms === null) {
     return <div />;
   }
 
   return (
     <React.Fragment>
-      <div>Home page</div>
+      <div>
+        I want to be a
+        <Select options={options} />
+      </div>
       <Link to="terms">See my terms</Link>
     </React.Fragment>
   );
