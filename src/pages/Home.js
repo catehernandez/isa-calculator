@@ -4,11 +4,12 @@ import Select from 'react-select';
 import { Link } from 'react-router-dom';
 
 /**
- * Homepage is where program data is fetched. User can select a program
- * here and opt to view payment terms.
+ * Fetch program names and terms from API. Allow user to choose a program and
+ * click to view program terms on next page.
  */
 const Home = () => {
-  const [terms, setTerms] = useState({});
+  const [terms, setTerms] = useState(null);
+  const [selectedProgram, setSelectedProgram] = useState(null);
 
   useEffect(() => {
     const fetchTerms = async () => {
@@ -20,28 +21,35 @@ const Home = () => {
     fetchTerms();
   }, []);
 
-  const programs = Object.keys(terms);
-
-  /* An array of objects where program name is both the key and value.
-    Needed to pass to react-select
-  */
-  const options = programs.map((program) => ({
-    value: program,
-    label: program,
-  }));
-
   //if data has not yet been fetched, return empty div
   if (terms === null) {
     return <div />;
   }
 
+  /* React-select configuration */
+  const programs = Object.keys(terms);
+
+  // Format programs as needed to populate react-select
+  const options = programs.map((program) => ({
+    value: program,
+    label: program,
+  }));
+
+  // Set selected program onChange in react-select dropdown
+  const selectProgram = (option) => {
+    const program = option.value;
+    setSelectedProgram(terms[program]);
+  };
+
   return (
     <React.Fragment>
       <div>
         I want to be a
-        <Select options={options} />
+        <Select options={options} onChange={selectProgram} />
       </div>
-      <Link to="terms">See my terms</Link>
+      <Link to={{ pathname: '/terms', state: { program: selectedProgram } }}>
+        See my terms
+      </Link>
     </React.Fragment>
   );
 };
