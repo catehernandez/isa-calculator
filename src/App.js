@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import Home from './pages/Home';
+import SelectProgram from './pages/SelectProgram';
 import Terms from './pages/Terms';
 
 const App = () => {
   return (
     <BrowserRouter>
       <Route exact path="/">
-        <Home />
+        <SelectProgram />
       </Route>
       <Route exact path="/terms">
         <Terms />
