@@ -59,12 +59,14 @@ const App = () => {
   if (selectedProgram === null) {
     return (
       <div>
-        I want to be a
-        <Select
-          options={options}
-          onChange={selectProgram}
-          styles={customSelectStyles}
-        />
+        I want to be a{' '}
+        <div className="react-select__inline-container">
+          <Select
+            options={options}
+            onChange={selectProgram}
+            styles={customSelectStyles}
+          />
+        </div>
       </div>
     );
   }
@@ -80,34 +82,41 @@ const App = () => {
   } = selectedProgram;
 
   return (
-    <React.Fragment>
+    <div className="app__container">
       <div>
-        I want to be a
-        <Select
-          options={options}
-          onChange={selectProgram}
-          styles={customSelectStyles}
-        />
+        I want to be a{' '}
+        <div className="react-select__inline-container">
+          <Select
+            options={options}
+            onChange={selectProgram}
+            styles={customSelectStyles}
+          />
+        </div>
       </div>
-      <div>
-        <h3>Monthly ISA Payments</h3>
-        <ISACalculator
-          borrowed={Number(tuition)}
-          cap={Number(isa_cap)}
-          length={Number(isa_length)}
-          take={Number(isa_take)}
-          threshold={Number(isa_threshold)}
-          avgAnnualSalary={Number(typical_salary)}
-        />
 
-        <h3>Monthly Loan Payments</h3>
-        <LoanCalculator
-          principal={tuition}
-          interest={loan_interest}
-          months={isa_length}
-        />
+      <div className="calculators__container">
+        <div>
+          <h3>Monthly ISA Payments</h3>
+          <ISACalculator
+            borrowed={Number(tuition)}
+            cap={Number(isa_cap)}
+            length={Number(isa_length)}
+            take={Number(isa_take)}
+            threshold={Number(isa_threshold)}
+            avgAnnualSalary={Number(typical_salary)}
+          />
+        </div>
+
+        <div>
+          <h3>Monthly Loan Payments</h3>
+          <LoanCalculator
+            principal={tuition}
+            interest={loan_interest}
+            months={isa_length}
+          />
+        </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 
