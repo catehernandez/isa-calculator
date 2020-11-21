@@ -80,7 +80,10 @@ const ISACalculator = (props) => {
             <b>{length} months:</b>
           </div>
           <div>
-            Monthly Payment: <b>${monthlyPayment}</b>
+            Monthly Payment:{' '}
+            <span className="monthly-payment">
+              <b>${monthlyPayment}</b>
+            </span>
           </div>
         </div>
       </div>
