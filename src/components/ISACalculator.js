@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Slider from '@material-ui/core/Slider';
 import PropTypes from 'prop-types';
 
 const ISACalculator = (props) => {
   const { avgAnnualSalary, borrowed, cap, length, take, threshold } = props;
 
+  const [salary, setSalary] = useState(avgAnnualSalary);
+  const handleSalaryChange = (event, newSalary) => {
+    setSalary(newSalary);
+  };
+
+  //marks for salary slider
+  const marks = [{ value: avgAnnualSalary }];
+
   return (
     <div>
+      <div>
+        <p>Annual Salary</p>
+        <Slider
+          aria-label="salary-slider"
+          min={0}
+          max={500000}
+          marks={marks}
+          onChange={handleSalaryChange}
+          step={250}
+          value={salary}
+          valueLabelDisplay="on"
+        />
+      </div>
       <div>Income share: {take}</div>
       <div>ISA length: {length}</div>
     </div>
