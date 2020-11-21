@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const ISACalculator = (props) => {
   const { avgAnnualSalary, borrowed, cap, length, take, threshold } = props;
 
-  //salary slider
+  //salary
   const [salary, setSalary] = useState(avgAnnualSalary);
   //marks for salary slider
   const marks = [{ value: avgAnnualSalary }];
@@ -16,11 +16,13 @@ const ISACalculator = (props) => {
   //montly payments
   const [monthlyPayment, setMonthlyPayment] = useState(0);
   useEffect(() => {
-    //if unemployed
-
-    //else if employed
-    const payment = (salary * take) / 12;
-    setMonthlyPayment(payment.toFixed(2));
+    //or if unemployed
+    if (salary <= threshold) {
+      setMonthlyPayment(0);
+    } else {
+      const payment = (salary * take) / 12;
+      setMonthlyPayment(payment.toFixed(2));
+    }
   }, [salary, take]);
 
   //format take as percentage
