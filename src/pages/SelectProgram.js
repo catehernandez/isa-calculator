@@ -3,6 +3,8 @@ import axios from 'axios';
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
 
+import ErrMessage from '../components/shared/ErrMessage';
+
 /**
  * Fetch program names and terms from API. Allow user to choose a program and
  * click to view program terms on next page.
@@ -10,12 +12,17 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   const [terms, setTerms] = useState(null);
   const [selectedProgram, setSelectedProgram] = useState(null);
+  const [hasErr, setHasErr] = useState(false);
 
   useEffect(() => {
     const fetchTerms = async () => {
-      const result = await axios('https://api.wetradeup.com/terms');
+      try {
+        const result = await axios('https://api.wetradeup.com/terms');
 
-      setTerms(result.data);
+        setTerms(result.data);
+      } catch {
+        setHasErr(true);
+      }
     };
 
     fetchTerms();
@@ -24,6 +31,10 @@ const Home = () => {
   //if data has not yet been fetched, return empty div
   if (terms === null) {
     return <div />;
+  }
+
+  if (hasErr) {
+    return <ErrMessage />;
   }
 
   /* React-select configuration */

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
+import ErrMessage from './shared/ErrMessage';
+
 /**
  * Hits external API to calculate estimated loan payment based on principal
  * (amount borrowed) interest rate, and length of loan.
@@ -34,7 +36,7 @@ const LoanCalculator = (props) => {
   }, [principal, interest, months]);
 
   if (hasError) {
-    return <div>Something went wrong. Please refresh.</div>;
+    return <ErrMessage />;
   }
 
   if (monthlyPayment === undefined) {
