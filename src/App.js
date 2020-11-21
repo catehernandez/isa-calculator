@@ -72,6 +72,7 @@ const App = () => {
     );
   }
 
+  //extract these variables if selectedProgram has been set
   const {
     isa_cap,
     isa_length,
