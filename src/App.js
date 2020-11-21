@@ -96,26 +96,20 @@ const App = () => {
       </div>
 
       <div className="calculators__container">
-        <div>
-          <h3>Monthly ISA Payments</h3>
-          <ISACalculator
-            borrowed={Number(tuition)}
-            cap={Number(isa_cap)}
-            length={Number(isa_length)}
-            take={Number(isa_take)}
-            threshold={Number(isa_threshold)}
-            avgAnnualSalary={Number(typical_salary)}
-          />
-        </div>
+        <ISACalculator
+          borrowed={Number(tuition)}
+          cap={Number(isa_cap)}
+          length={Number(isa_length)}
+          take={Number(isa_take)}
+          threshold={Number(isa_threshold)}
+          avgAnnualSalary={Number(typical_salary)}
+        />
 
-        <div>
-          <h3>Monthly Loan Payments</h3>
-          <LoanCalculator
-            principal={tuition}
-            interest={loan_interest}
-            months={isa_length}
-          />
-        </div>
+        <LoanCalculator
+          principal={tuition}
+          interest={loan_interest}
+          months={isa_length}
+        />
       </div>
     </div>
   );
