@@ -3,23 +3,26 @@ import Slider from './shared/Slider';
 import Switch from '@material-ui/core/Switch';
 import PropTypes from 'prop-types';
 
+/**
+ * Calculate monthly payments under an income share agreement for selected program.
+ */
 const ISACalculator = (props) => {
   const { avgAnnualSalary, borrowed, cap, length, take, threshold } = props;
   const maxPayment = borrowed * cap;
 
-  //salary
+  //controlled by Slider
   const [salary, setSalary] = useState(avgAnnualSalary);
   const handleSalaryChange = (event, newSalary) => {
     setSalary(newSalary);
   };
 
-  //employed
+  //controlled by Switch
   const [isEmployed, setIsEmployed] = useState(true);
   const handleEmploymentChange = (event) => {
     setIsEmployed(event.target.checked);
   };
 
-  //montly payments
+  //monthly payments
   const [monthlyPayment, setMonthlyPayment] = useState(0);
   useEffect(() => {
     //or if unemployed
@@ -32,11 +35,14 @@ const ISACalculator = (props) => {
   }, [isEmployed, salary, take, threshold]);
 
   /* UI */
-  //marks for salary slider; max annual to display on slider
+  //marks for salary slider
   const marks = [{ value: avgAnnualSalary }];
+
+  //set sensible max salary to display on slider
   //student will me the capped return in exactly the ISA length at this salary
   const maxTotalSalary = maxPayment / take;
   const maxAnnualSalary = Number((maxTotalSalary / (length / 12)).toFixed(0));
+
   //format take as percentage
   const incomeShare = (take * 100).toFixed(1);
 
