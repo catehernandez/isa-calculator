@@ -33,7 +33,7 @@ const LoanCalculator = (props) => {
   }, [principal, interest, months]);
 
   if (monthlyPayment === undefined) {
-    return <div />;
+    return <div>loading...</div>;
   }
 
   return (
