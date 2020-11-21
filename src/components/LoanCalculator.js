@@ -5,6 +5,8 @@ import axios from 'axios';
 import ErrMessage from './shared/ErrMessage';
 import Loading from '../components/shared/Loading';
 
+import './calculator.css';
+
 /**
  * Hits external API to calculate estimated loan payment based on principal
  * (amount borrowed) interest rate, and length of loan.
@@ -45,10 +47,12 @@ const LoanCalculator = (props) => {
   }
 
   return (
-    <div>
-      To pay back <b>${principal}</b> over <b>{months} months</b> at{' '}
-      <b>{Number(interest * 100).toFixed(1)}%</b> interest, your monthly payment
-      will be: <b>${monthlyPayment}</b>
+    <div className="calculator__box" role="presentation">
+      <div className="calculator__container" role="presentation">
+        To pay back <b>${principal}</b> over <b>{months} months</b> at{' '}
+        <b>{Number(interest * 100).toFixed(1)}%</b> interest, your monthly
+        payment will be: <b>${monthlyPayment}</b>
+      </div>
     </div>
   );
 };

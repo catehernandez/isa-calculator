@@ -3,6 +3,8 @@ import Slider from './shared/Slider';
 import Switch from '@material-ui/core/Switch';
 import PropTypes from 'prop-types';
 
+import './calculator.css';
+
 /**
  * Calculate monthly payments under an income share agreement for selected program.
  */
@@ -47,33 +49,35 @@ const ISACalculator = (props) => {
   const incomeShare = (take * 100).toFixed(1);
 
   return (
-    <div>
-      <div>
-        Employed
-        <Switch
-          checked={isEmployed}
-          color="primary"
-          onChange={handleEmploymentChange}
-        />
+    <div className="calculator__box" role="presentation">
+      <div className="calculator__container" role="presentation">
+        <div>
+          Employed
+          <Switch
+            checked={isEmployed}
+            color="primary"
+            onChange={handleEmploymentChange}
+          />
+        </div>
+        <div>
+          <p>Annual Salary</p>
+          <Slider
+            aria-label="salary-slider"
+            disabled={!isEmployed}
+            min={threshold}
+            max={maxAnnualSalary}
+            marks={marks}
+            onChange={handleSalaryChange}
+            step={500}
+            value={salary}
+            valueLabelDisplay="on"
+          />
+        </div>
+        <div>
+          With a <b>{incomeShare}% income share</b> for <b>{length} months</b>
+        </div>
+        <div>Monthly Payment: {monthlyPayment}</div>
       </div>
-      <div>
-        <p>Annual Salary</p>
-        <Slider
-          aria-label="salary-slider"
-          disabled={!isEmployed}
-          min={threshold}
-          max={maxAnnualSalary}
-          marks={marks}
-          onChange={handleSalaryChange}
-          step={500}
-          value={salary}
-          valueLabelDisplay="on"
-        />
-      </div>
-      <div>
-        With a <b>{incomeShare}% income share</b> for <b>{length} months</b>
-      </div>
-      <div>Monthly Payment: {monthlyPayment}</div>
     </div>
   );
 };
