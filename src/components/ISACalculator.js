@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Slider from './shared/Slider';
+import Switch from '@material-ui/core/Switch';
 import PropTypes from 'prop-types';
 
 const ISACalculator = (props) => {
@@ -12,33 +13,48 @@ const ISACalculator = (props) => {
     setSalary(newSalary);
   };
 
-  //UI: marks for salary slider; max annual to display on slider
-  const marks = [{ value: avgAnnualSalary }];
-  //student will me the capped return in exactly the ISA length at this salary
-  const maxTotalSalary = maxPayment / take;
-  const maxAnnualSalary = Number((maxTotalSalary / (length / 12)).toFixed(0));
+  //employed
+  const [isEmployed, setIsEmployed] = useState(true);
+  const handleEmploymentChange = (event) => {
+    setIsEmployed(event.target.checked);
+  };
 
   //montly payments
   const [monthlyPayment, setMonthlyPayment] = useState(0);
   useEffect(() => {
     //or if unemployed
-    if (salary <= threshold) {
+    if (salary <= threshold || !isEmployed) {
       setMonthlyPayment(0);
     } else {
       const payment = (salary * take) / 12;
       setMonthlyPayment(payment.toFixed(2));
     }
-  }, [salary, take]);
+  }, [isEmployed, salary, take, threshold]);
 
+  /* UI */
+  //marks for salary slider; max annual to display on slider
+  const marks = [{ value: avgAnnualSalary }];
+  //student will me the capped return in exactly the ISA length at this salary
+  const maxTotalSalary = maxPayment / take;
+  const maxAnnualSalary = Number((maxTotalSalary / (length / 12)).toFixed(0));
   //format take as percentage
   const incomeShare = (take * 100).toFixed(1);
 
   return (
     <div>
       <div>
+        Employed
+        <Switch
+          checked={isEmployed}
+          color="primary"
+          onChange={handleEmploymentChange}
+        />
+      </div>
+      <div>
         <p>Annual Salary</p>
         <Slider
           aria-label="salary-slider"
+          disabled={!isEmployed}
           min={threshold}
           max={maxAnnualSalary}
           marks={marks}
