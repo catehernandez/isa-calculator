@@ -59,7 +59,7 @@ const App = () => {
 
   if (selectedProgram === null) {
     return (
-      <div>
+      <div className="app__container">
         I want to be a{' '}
         <div className="react-select__inline-container">
           <Select
@@ -93,6 +93,10 @@ const App = () => {
             styles={customSelectStyles}
           />
         </div>
+        <p>
+          The average tuition for this program is <b>${tuition}</b>. If you
+          borrow <b>${tuition}</b>, your monthly payments would be:
+        </p>
       </div>
 
       <div className="calculators__container">
