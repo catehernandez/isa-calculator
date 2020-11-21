@@ -4,14 +4,19 @@ import PropTypes from 'prop-types';
 
 const ISACalculator = (props) => {
   const { avgAnnualSalary, borrowed, cap, length, take, threshold } = props;
+  const maxPayment = borrowed * cap;
 
   //salary
   const [salary, setSalary] = useState(avgAnnualSalary);
-  //marks for salary slider
-  const marks = [{ value: avgAnnualSalary }];
   const handleSalaryChange = (event, newSalary) => {
     setSalary(newSalary);
   };
+
+  //UI: marks for salary slider; max annual to display on slider
+  const marks = [{ value: avgAnnualSalary }];
+  //student will me the capped return in exactly the ISA length at this salary
+  const maxTotalSalary = maxPayment / take;
+  const maxAnnualSalary = Number((maxTotalSalary / (length / 12)).toFixed(0));
 
   //montly payments
   const [monthlyPayment, setMonthlyPayment] = useState(0);
@@ -34,11 +39,11 @@ const ISACalculator = (props) => {
         <p>Annual Salary</p>
         <Slider
           aria-label="salary-slider"
-          min={0}
-          max={500000}
+          min={threshold}
+          max={maxAnnualSalary}
           marks={marks}
           onChange={handleSalaryChange}
-          step={250}
+          step={500}
           value={salary}
           valueLabelDisplay="on"
         />
