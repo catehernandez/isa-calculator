@@ -13,6 +13,7 @@
 /* tablets & larger */
 @media (min-width: 768px) {
   .calculator__box {
+    margin: 1rem;
     width: 500px;
   }
 
