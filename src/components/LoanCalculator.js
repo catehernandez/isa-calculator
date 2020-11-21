@@ -46,8 +46,9 @@ const LoanCalculator = (props) => {
 
   return (
     <div>
-      To pay back ${principal} over {months} months at {interest * 100}%
-      interest, your monthly payment will be ${monthlyPayment}
+      To pay back <b>${principal}</b> over <b>{months} months</b> at{' '}
+      <b>{Number(interest * 100).toFixed(1)}%</b> interest, your monthly payment
+      will be: <b>${monthlyPayment}</b>
     </div>
   );
 };
