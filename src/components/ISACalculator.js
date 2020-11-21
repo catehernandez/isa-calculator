@@ -76,7 +76,8 @@ const ISACalculator = (props) => {
             />
           </div>
           <div>
-            With a <b>{incomeShare}% income share</b> for <b>{length} months</b>
+            With a <b>{incomeShare}% income share</b> for{' '}
+            <b>{length} months:</b>
           </div>
           <div>
             Monthly Payment: <b>${monthlyPayment}</b>
