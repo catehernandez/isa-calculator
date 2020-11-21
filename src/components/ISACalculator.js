@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Slider from '@material-ui/core/Slider';
+import Slider from './shared/Slider';
 import PropTypes from 'prop-types';
 
 const ISACalculator = (props) => {
