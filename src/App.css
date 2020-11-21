@@ -1,9 +1,16 @@
+.app__container {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 .calculators__container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 1rem;
-  width: 95%;
+  justify-content: space-between;
+  width: 100%;
 }
 
 /* This is the only way to get React Select inline*/
@@ -14,6 +21,9 @@
 
 /* tablets & larger */
 @media (min-width: 768px) {
+  .app__container {
+    width: 90%;
+  }
   .calculators__container {
     flex-direction: row;
   }
