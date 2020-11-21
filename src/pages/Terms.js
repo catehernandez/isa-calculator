@@ -30,12 +30,12 @@ const Terms = () => {
     <div>
       <p>Your payment plan if you borrow ${tuition}</p>
       <ISACalculator
-        borrowed={tuition}
-        cap={isa_cap}
-        length={isa_length}
-        take={isa_take}
-        threshold={isa_threshold}
-        annual_salary={typical_salary}
+        borrowed={Number(tuition)}
+        cap={Number(isa_cap)}
+        length={Number(isa_length)}
+        take={Number(isa_take)}
+        threshold={Number(isa_threshold)}
+        avgAnnualSalary={Number(typical_salary)}
       />
 
       <LoanCalculator
