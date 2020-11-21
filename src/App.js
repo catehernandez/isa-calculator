@@ -3,9 +3,12 @@ import axios from 'axios';
 import Select from 'react-select';
 
 import ErrMessage from './components/shared/ErrMessage';
+import CustomSelectStyles from './components/shared/CustomSelectStyles';
 import Loading from './components/shared/Loading';
 import ISACalculator from './components/ISACalculator';
 import LoanCalculator from './components/LoanCalculator';
+import './App.css';
+import customSelectStyles from './components/shared/CustomSelectStyles';
 
 /**
  * Fetch list of programs. Allow student to select a program to view its terms.
@@ -57,7 +60,11 @@ const App = () => {
     return (
       <div>
         I want to be a
-        <Select options={options} onChange={selectProgram} />
+        <Select
+          options={options}
+          onChange={selectProgram}
+          styles={customSelectStyles}
+        />
       </div>
     );
   }
@@ -76,7 +83,11 @@ const App = () => {
     <React.Fragment>
       <div>
         I want to be a
-        <Select options={options} onChange={selectProgram} />
+        <Select
+          options={options}
+          onChange={selectProgram}
+          styles={customSelectStyles}
+        />
       </div>
       <div>
         <h3>Monthly ISA Payments</h3>
