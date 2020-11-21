@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 import ErrMessage from './shared/ErrMessage';
+import Loading from '../components/shared/Loading';
 
 /**
  * Hits external API to calculate estimated loan payment based on principal
@@ -40,7 +41,7 @@ const LoanCalculator = (props) => {
   }
 
   if (monthlyPayment === undefined) {
-    return <div>loading...</div>;
+    return <Loading />;
   }
 
   return (

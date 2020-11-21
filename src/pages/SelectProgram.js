@@ -4,6 +4,7 @@ import Select from 'react-select';
 import { Link } from 'react-router-dom';
 
 import ErrMessage from '../components/shared/ErrMessage';
+import Loading from '../components/shared/Loading';
 
 /**
  * Fetch program names and terms from API. Allow user to choose a program and
@@ -28,13 +29,13 @@ const Home = () => {
     fetchTerms();
   }, []);
 
-  //if data has not yet been fetched, return empty div
-  if (terms === null) {
-    return <div />;
-  }
-
   if (hasErr) {
     return <ErrMessage />;
+  }
+
+  //if there is not an err, and data has not yet been fetched
+  if (terms === null) {
+    return <Loading />;
   }
 
   /* React-select configuration */
