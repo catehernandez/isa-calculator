@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 import ISACalculator from '../components/ISACalculator';
+import LoanCalculator from '../components/LoanCalculator';
 
 /**
  * Displays the terms for the program selected on the SelectProgram page.
@@ -35,6 +36,12 @@ const Terms = () => {
         take={isa_take}
         threshold={isa_threshold}
         annual_salary={typical_salary}
+      />
+
+      <LoanCalculator
+        principal={tuition}
+        interest={loan_interest}
+        months={isa_length}
       />
     </div>
   );
