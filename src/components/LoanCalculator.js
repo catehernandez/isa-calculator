@@ -8,8 +8,9 @@ import axios from 'axios';
  */
 const LoanCalculator = (props) => {
   const { principal, interest, months } = props;
-  const [monthlyPayment, setMonthlyPayment] = useState();
 
+  const [monthlyPayment, setMonthlyPayment] = useState();
+  const [hasError, setHasError] = useState(false);
   useEffect(() => {
     const getEstimatedPayment = async () => {
       try {
@@ -24,13 +25,17 @@ const LoanCalculator = (props) => {
 
         const { payment } = result.data;
         setMonthlyPayment(payment);
-      } catch (e) {
-        console.log(e);
+      } catch {
+        setHasError(true);
       }
     };
 
     getEstimatedPayment();
   }, [principal, interest, months]);
+
+  if (hasError) {
+    return <div>Something went wrong. Please refresh.</div>;
+  }
 
   if (monthlyPayment === undefined) {
     return <div>loading...</div>;
