@@ -1,8 +1,10 @@
 /* shared styles for ISA Calculator and LoanCalculator */
 .calculator__box {
+  align-items: center;
   border: 1px solid #c4c4c4;
   border-radius: 10px;
   display: flex;
+  justify-content: center;
   width: 95%;
 }
 
