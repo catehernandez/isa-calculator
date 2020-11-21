@@ -42,10 +42,6 @@ const LoanCalculator = (props) => {
     return <ErrMessage />;
   }
 
-  if (monthlyPayment === undefined) {
-    return <Loading />;
-  }
-
   return (
     <div>
       <h3 className="calculator__title">Monthly Loan Payments</h3>
@@ -53,7 +49,8 @@ const LoanCalculator = (props) => {
         <div className="calculator__container" role="presentation">
           To pay back <b>${principal}</b> over <b>{months} months</b> at{' '}
           <b>{Number(interest * 100).toFixed(1)}%</b> interest, your monthly
-          payment will be: <b>${monthlyPayment}</b>
+          payment will be:{' '}
+          {monthlyPayment ? <b>${monthlyPayment}</b> : <Loading />}
         </div>
       </div>
     </div>
