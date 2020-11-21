@@ -1,17 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from './shared/Slider';
 import PropTypes from 'prop-types';
 
 const ISACalculator = (props) => {
   const { avgAnnualSalary, borrowed, cap, length, take, threshold } = props;
 
+  //salary slider
   const [salary, setSalary] = useState(avgAnnualSalary);
+  //marks for salary slider
+  const marks = [{ value: avgAnnualSalary }];
   const handleSalaryChange = (event, newSalary) => {
     setSalary(newSalary);
   };
 
-  //marks for salary slider
-  const marks = [{ value: avgAnnualSalary }];
+  //montly payments
+  const [monthlyPayment, setMonthlyPayment] = useState(0);
+  useEffect(() => {
+    //if unemployed
+
+    //else if employed
+    const payment = (salary * take) / 12;
+    setMonthlyPayment(payment.toFixed(2));
+  }, [salary, take]);
+
+  //format take as percentage
+  const incomeShare = (take * 100).toFixed(1);
 
   return (
     <div>
@@ -28,8 +41,10 @@ const ISACalculator = (props) => {
           valueLabelDisplay="on"
         />
       </div>
-      <div>Income share: {take}</div>
-      <div>ISA length: {length}</div>
+      <div>
+        With a <b>{incomeShare}% income share</b> for <b>{length} months</b>
+      </div>
+      <div>Monthly Payment: {monthlyPayment}</div>
     </div>
   );
 };
