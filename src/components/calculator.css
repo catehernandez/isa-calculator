@@ -7,12 +7,16 @@
 }
 
 .calculator__container {
-  padding: 40px;
+  padding: 1rem;
 }
 
 /* tablets & larger */
 @media (min-width: 768px) {
   .calculator__box {
     width: 500px;
+  }
+
+  .calculator__container {
+    padding: 2.5rem;
   }
 }

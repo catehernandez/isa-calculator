@@ -1,6 +1,6 @@
 .calculators__container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   padding: 1rem;
   width: 95%;
@@ -10,4 +10,11 @@
 .react-select__inline-container {
   display: inline-block;
   padding-left: 0.5rem;
+}
+
+/* tablets & larger */
+@media (min-width: 768px) {
+  .calculators__container {
+    flex-direction: row;
+  }
 }
