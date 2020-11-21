@@ -41,12 +41,12 @@ const ISACalculator = (props) => {
   const marks = [{ value: avgAnnualSalary }];
 
   //set sensible max salary to display on slider
-  //student will me the capped return in exactly the ISA length at this salary
+  //student will meet the capped return in exactly the ISA length at this salary
   const maxTotalSalary = maxPayment / take;
   const maxAnnualSalary = Number((maxTotalSalary / (length / 12)).toFixed(0));
 
   //format take as percentage
-  const incomeShare = (take * 100).toFixed(1);
+  const takeAsPercent = (take * 100).toFixed(1);
 
   return (
     <div>
@@ -76,7 +76,7 @@ const ISACalculator = (props) => {
             />
           </div>
           <div>
-            With a <b>{incomeShare}% income share</b> for{' '}
+            With a <b>{takeAsPercent}% income share</b> for{' '}
             <b>{length} months:</b>
           </div>
           <div>
