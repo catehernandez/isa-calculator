@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import Tooltip from '@material-ui/core/Tooltip';
 import { withStyles } from '@material-ui/core/styles';
 
+import toUSD from '../../utils/toUSD';
+
 const StyledTooltip = withStyles((theme) => ({
   tooltip: {
     backgroundColor: 'transparent',
@@ -19,11 +21,7 @@ const USDTooltip = (props) => {
   const { children, open, value } = props;
 
   //build in currency method always forces 2 decimal places in USD
-  const valueInUSD =
-    '$' +
-    new Intl.NumberFormat('en-US', {
-      maximumFractionDigits: 0,
-    }).format(value);
+  const valueInUSD = toUSD(value);
 
   return (
     <StyledTooltip
