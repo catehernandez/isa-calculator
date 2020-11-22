@@ -13,7 +13,8 @@ const StyledTooltip = withStyles((theme) => ({
     backgroundColor: 'transparent',
     color: '#00003F',
     fontSize: '.875rem',
-    bottom: '-100px',
+    tooltipPlacementTop: '-20px',
+    margin: '0px',
   },
 }))(Tooltip);
 
