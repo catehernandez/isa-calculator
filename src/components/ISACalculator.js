@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Slider from './shared/Slider';
 import Switch from '@material-ui/core/Switch';
 import PropTypes from 'prop-types';
 
+import Slider from './shared/Slider';
+import USDTooltip from './shared/USDTooltip';
 import './calculator.css';
 
 /**
@@ -73,6 +74,7 @@ const ISACalculator = (props) => {
               step={500}
               value={salary}
               valueLabelDisplay="on"
+              ValueLabelComponent={USDTooltip}
             />
           </div>
           <div>
