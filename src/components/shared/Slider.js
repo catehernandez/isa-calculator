@@ -11,7 +11,6 @@ const Slider = withStyles({
   thumb: {},
   active: {},
   valueLabel: {
-    top: -22,
     '& *': {
       background: 'transparent',
       color: '#00003F',

@@ -4,6 +4,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Tooltip from '@material-ui/core/Tooltip';
+import { withStyles } from '@material-ui/core/styles';
+
+const StyledTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: 'transparent',
+    color: '#00003F',
+    fontSize: '.875rem',
+    bottom: '-100px',
+  },
+}))(Tooltip);
 
 const USDTooltip = (props) => {
   const { children, open, value } = props;
@@ -16,9 +26,14 @@ const USDTooltip = (props) => {
     }).format(value);
 
   return (
-    <Tooltip open={open} enterTouchDelay={0} placement="top" title={valueInUSD}>
+    <StyledTooltip
+      open={open}
+      enterTouchDelay={0}
+      placement="bottom"
+      title={valueInUSD}
+    >
       {children}
-    </Tooltip>
+    </StyledTooltip>
   );
 };
 
