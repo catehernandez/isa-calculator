@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import ErrMessage from './shared/ErrMessage';
 import Loading from '../components/shared/Loading';
+import toUSD from '../utils/toUSD';
 
 import './calculator.css';
 
@@ -13,6 +14,7 @@ import './calculator.css';
  */
 const LoanCalculator = (props) => {
   const { principal, interest, months } = props;
+  const principalInUSD = toUSD(principal);
 
   const [monthlyPayment, setMonthlyPayment] = useState();
   const [hasError, setHasError] = useState(false);
@@ -47,7 +49,7 @@ const LoanCalculator = (props) => {
       <h3 className="calculator__title">Monthly Loan Payments</h3>
       <div className="calculator__box" role="presentation">
         <div className="calculator__container" role="presentation">
-          To pay back <b>${principal}</b> over <b>{months} months</b> at{' '}
+          To pay back <b>{principalInUSD}</b> over <b>{months} months</b> at{' '}
           <b>{Number(interest * 100).toFixed(1)}%</b> interest: Monthly payment:{' '}
           {monthlyPayment ? <b>${monthlyPayment}</b> : <Loading />}
         </div>

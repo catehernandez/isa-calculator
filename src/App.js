@@ -7,6 +7,7 @@ import CustomSelectStyles from './components/shared/CustomSelectStyles';
 import Loading from './components/shared/Loading';
 import ISACalculator from './components/ISACalculator';
 import LoanCalculator from './components/LoanCalculator';
+import toUSD from './utils/toUSD';
 
 import './App.css';
 import customSelectStyles from './components/shared/CustomSelectStyles';
@@ -83,6 +84,9 @@ const App = () => {
     typical_salary,
   } = selectedProgram;
 
+  //formatted tuition
+  const tuitionInUSD = toUSD(tuition);
+
   return (
     <div className="app__container">
       <div>
@@ -95,8 +99,8 @@ const App = () => {
           />
         </div>
         <p>
-          The average tuition for this program is <b>${tuition}</b>. If you
-          borrow <b>${tuition}</b>, your monthly payments would be:
+          The average tuition for this program is <b>{tuitionInUSD}</b>. If you
+          borrow <b>{tuitionInUSD}</b>, your monthly payments would be:
         </p>
       </div>
 
