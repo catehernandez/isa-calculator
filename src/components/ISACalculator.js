@@ -81,11 +81,11 @@ const ISACalculator = (props) => {
             With a <b>{takeAsPercent}% income share</b> for{' '}
             <b>{length} months:</b>
           </div>
-          <div>
-            Monthly Payment:{' '}
-            <span className="monthly-payment">
-              <b>${monthlyPayment}</b>
-            </span>
+          <div className="monthly-payment__container">
+            Monthly Payment
+            <div className="monthly-payment monthly-payment--ISA">
+              ${monthlyPayment}
+            </div>
           </div>
         </div>
       </div>

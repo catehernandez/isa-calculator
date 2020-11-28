@@ -18,7 +18,7 @@ afterEach(() => {
   container = null;
 });
 
-it('sets monthly payments correctly', () => {
+it('sets monthly payment ISA payment correctly', () => {
   act(() => {
     render(
       <ISACalculator
@@ -33,7 +33,7 @@ it('sets monthly payments correctly', () => {
     );
   });
 
-  expect(container.querySelector('.monthly-payment').textContent).toBe(
+  expect(container.querySelector('.monthly-payment--ISA').textContent).toBe(
     '$284.38'
   );
 });
