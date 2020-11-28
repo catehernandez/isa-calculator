@@ -5,8 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 const Slider = withStyles({
   root: {
     height: 2,
-    padding: '15px 0',
-    width: 300,
+    padding: '0 0 1.75rem',
+    width: '100%',
   },
   thumb: {},
   active: {},
