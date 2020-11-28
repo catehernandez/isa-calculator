@@ -61,13 +61,15 @@ const App = () => {
   if (selectedProgram === null) {
     return (
       <div className="app__container">
-        I want to be a{' '}
-        <div className="react-select__inline-container">
-          <Select
-            options={options}
-            onChange={selectProgram}
-            styles={customSelectStyles}
-          />
+        <div className="select-program__container">
+          I want to be a{' '}
+          <div className="react-select__inline-container">
+            <Select
+              options={options}
+              onChange={selectProgram}
+              styles={customSelectStyles}
+            />
+          </div>
         </div>
       </div>
     );
@@ -89,7 +91,7 @@ const App = () => {
 
   return (
     <div className="app__container">
-      <div>
+      <div className="select-program__container">
         I want to be a{' '}
         <div className="react-select__inline-container">
           <Select
