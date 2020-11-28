@@ -45,10 +45,10 @@ const LoanCalculator = (props) => {
   }
 
   return (
-    <div>
+    <div className="calculator calculator--loan">
       <h3 className="calculator__title">Monthly Loan Payments</h3>
       <div className="calculator__box" role="presentation">
-        <div className="calculator__container" role="presentation">
+        <div className="calculator__container">
           To pay back <b>{principalInUSD}</b> over <b>{months} months</b> at{' '}
           <b>{Number(interest * 100).toFixed(1)}%</b> interest: Monthly payment:{' '}
           {monthlyPayment ? <b>${monthlyPayment}</b> : <Loading />}

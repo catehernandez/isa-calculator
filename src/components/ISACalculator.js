@@ -50,10 +50,10 @@ const ISACalculator = (props) => {
   const takeAsPercent = (take * 100).toFixed(1);
 
   return (
-    <div>
+    <div className="calculator calculator--ISA">
       <h3 className="calculator__title">Monthly ISA Payments</h3>
       <div className="calculator__box" role="presentation">
-        <div className="calculator__container" role="presentation">
+        <div className="calculator__container">
           <div>
             Employed
             <Switch

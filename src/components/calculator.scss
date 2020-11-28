@@ -1,15 +1,32 @@
 /* shared styles for ISA Calculator and LoanCalculator */
+
+/* contains calculator title and the display box */
+.calculator {
+  margin: 1rem;
+
+  @media (min-width: 768px) {
+    margin: 1rem 2rem;
+  }
+}
+
 .calculator__box {
   align-items: center;
   border: 1px solid #c4c4c4;
   border-radius: 10px;
   display: flex;
   justify-content: center;
-  width: 95%;
+
+  @media (min-width: 768px) {
+    width: 500px;
+  }
 }
 
 .calculator__container {
   padding: 1rem;
+
+  @media (min-width: 768px) {
+    padding: 2.5rem;
+  }
 }
 
 .calculator__title {
@@ -18,13 +35,3 @@
 }
 
 /* tablets & larger */
-@media (min-width: 768px) {
-  .calculator__box {
-    margin: 1rem;
-    width: 500px;
-  }
-
-  .calculator__container {
-    padding: 2.5rem;
-  }
-}
