@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Slider from './shared/Slider';
 import USDTooltip from './shared/USDTooltip';
-import './calculator.css';
+import './calculator.scss';
 
 /**
  * Calculate monthly payments under an income share agreement for selected program.

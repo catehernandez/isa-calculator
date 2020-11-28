@@ -6,7 +6,7 @@ import ErrMessage from './shared/ErrMessage';
 import Loading from '../components/shared/Loading';
 import toUSD from '../utils/toUSD';
 
-import './calculator.css';
+import './calculator.scss';
 
 /**
  * Hits external API to calculate estimated loan payment based on principal

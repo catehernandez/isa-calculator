@@ -9,7 +9,7 @@ import ISACalculator from './components/ISACalculator';
 import LoanCalculator from './components/LoanCalculator';
 import toUSD from './utils/toUSD';
 
-import './App.css';
+import './App.scss';
 import customSelectStyles from './components/shared/CustomSelectStyles';
 
 /**
